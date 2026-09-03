@@ -54,6 +54,7 @@ def login_user(request):
         },
     )
 
+# Log the user out and redirect to the home page
 def logout_user(request):
     logout(request)
     return redirect("home")
