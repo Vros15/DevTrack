@@ -1,0 +1,34 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<h1>Job Applications</h1>
+
+
+{% if applications %}
+
+    {% for application in applications %}
+        <div>
+            <h2>{{ application.position }}</h2>
+
+            <p>Company: {{ application.company.name }}</p>
+            <p>Status: {{ application.get_status_display }}</p>
+
+            {% if application.applied_date %}
+                <p>Applied Date: {{ application.applied_date }}</p>
+            
+            
+            
+            {% endif %}
+
+        </div>
+
+    {% endfor %}
+    
+{% else %}
+    <p>No job applications found.</p>
+
+{% endif %}
+
+
+{% endblock %}
