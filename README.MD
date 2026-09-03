@@ -175,36 +175,36 @@ Rejected: 4
 
 ## Phase 1 — Foundation
 
-* Set up Django project structure
-* Configure Python virtual environment
-* Configure application settings
-* Set up dependency management
-* Configure Git and repository structure
-* Create shared project documentation
-* Establish base application architecture
+- [x] Set up Django project structure
+- [x] Configure Python virtual environment
+- [x] Configure application settings
+- [x] Set up dependency management
+- [x] Configure Git and repository structure
+- [x] Create shared project documentation
+- [x] Establish base application architecture
 
 ---
 
 ## Phase 2 — Data Layer
 
-* Create `Company` model
-* Create `JobApplication` model
-* Associate job applications with authenticated users
-* Define model relationships
-* Create and apply database migrations
-* Register models with Django Admin
-* Validate model behavior through administrative workflows
+- [x] Create `Company` model
+- [x] Create `JobApplication` model
+- [x] Associate job applications with authenticated users
+- [x] Define model relationships
+- [x] Create and apply database migrations
+- [x] Register models with Django Admin
+- [x] Validate model behavior through administrative workflows
 
 ---
 
 ## Phase 3 — Authentication
 
-* Implement user registration
-* Implement login
-* Implement logout
-* Create authentication templates
-* Protect authenticated routes
-* Add navigation based on authentication state
+- [x] Implement user registration
+- [x] Implement login
+- [x] Implement logout
+- [x] Create authentication templates
+- [ ] Protect authenticated routes
+- [x] Add navigation based on authentication state
 
 ---
 
@@ -214,70 +214,70 @@ Implement full create, read, update, and delete workflows for job applications.
 
 ### Create
 
-* Create application form
-* Save applications to the database
-* Automatically associate applications with the logged-in user
+- [ ] Create application form
+- [ ] Save applications to the database
+- [ ] Automatically associate applications with the logged-in user
 
 ### Read
 
-* Display application list
-* Display application detail pages
-* Display related company information
+- [ ] Display application list
+- [ ] Display application detail pages
+- [ ] Display related company information
 
 ### Update
 
-* Edit job application details
-* Update application status
-* Update notes and job metadata
+- [ ] Edit job application details
+- [ ] Update application status
+- [ ] Update notes and job metadata
 
 ### Delete
 
-* Add delete confirmation workflow
-* Safely remove applications
+- [ ] Add delete confirmation workflow
+- [ ] Safely remove applications
 
 ---
 
 ## Phase 5 — Authorization & Data Security
 
-* Restrict application queries by authenticated user
-* Prevent users from accessing another user's application
-* Prevent unauthorized updates
-* Prevent unauthorized deletes
-* Validate ownership at the view level
+- [ ] Restrict application queries by authenticated user
+- [ ] Prevent users from accessing another user's application
+- [ ] Prevent unauthorized updates
+- [ ] Prevent unauthorized deletes
+- [ ] Validate ownership at the view level
 
 ---
 
 ## Phase 6 — Dashboard & Frontend
 
-* Create shared `base.html`
-* Build application navigation
-* Create authenticated dashboard
-* Display application statistics
-* Display recent applications
-* Add application status summaries
-* Add responsive CSS styling
-* Improve form usability
-* Improve empty states and application feedback
+- [x] Create shared `base.html`
+- [x] Build application navigation
+- [ ] Create authenticated dashboard
+- [ ] Display application statistics
+- [ ] Display recent applications
+- [ ] Add application status summaries
+- [x] Add responsive CSS styling
+- [ ] Improve form usability
+- [ ] Improve empty states and application feedback
 
 ---
 
 ## Phase 7 — Search, Filtering & Productivity
 
-* Search applications by position or company
-* Filter applications by status
-* Sort applications by date
-* Sort applications by company
-* Add recent activity views
-* Improve dashboard visibility into active applications
+- [ ] Search applications by position or company
+- [ ] Filter applications by status
+- [ ] Sort applications by date
+- [ ] Sort applications by company
+- [ ] Add recent activity views
+- [ ] Improve dashboard visibility into active applications
 
 ---
 
 ## Phase 8 — File & Image Support
 
-* Add company logo uploads
-* Configure Django media storage
-* Display uploaded logos in company and application views
-* Validate uploaded file types
+- [ ] Add company logo uploads
+- [ ] Configure Django media storage
+- [ ] Display uploaded logos in company and application views
+- [ ] Validate uploaded file types
 
 ---
 
@@ -285,39 +285,21 @@ Implement full create, read, update, and delete workflows for job applications.
 
 Expose application data through RESTful endpoints using Django REST Framework.
 
-Potential endpoints:
-
-```text
-GET    /api/applications/
-POST   /api/applications/
-GET    /api/applications/<id>/
-PUT    /api/applications/<id>/
-DELETE /api/applications/<id>/
-```
-
-The API can support future clients such as:
-
-* React frontend
-* Mobile applications
-* Browser extensions
-* External automation tools
+- [ ] `GET /api/applications/`
+- [ ] `POST /api/applications/`
+- [ ] `GET /api/applications/<id>/`
+- [ ] `PUT /api/applications/<id>/`
+- [ ] `DELETE /api/applications/<id>/`
 
 ---
 
 ## Phase 10 — Analytics
 
-Add dashboard analytics for the user's job search pipeline.
-
-Potential metrics include:
-
-* Total applications
-* Applications per week
-* Interview rate
-* Offer rate
-* Rejection rate
-* Applications by status
-* Applications by company
-* Recent activity
+- [ ] Total applications tracking
+- [ ] Applications per week calculations
+- [ ] Interview & offer rate metrics
+- [ ] Rejection rate tracking
+- [ ] Pipeline activity summary
 
 ---
 
@@ -325,15 +307,10 @@ Potential metrics include:
 
 Integrate an LLM-powered job analysis workflow.
 
-Potential functionality:
-
-* Paste a job description
-* Extract required skills
-* Identify matching skills
-* Identify missing skills
-* Summarize job requirements
-* Generate interview preparation topics
-* Compare job descriptions against user-provided experience
+- [ ] Extract required skills from job description
+- [ ] Identify matching & missing skills
+- [ ] Summarize job requirements
+- [ ] Generate interview preparation topics
 
 Example output:
 
