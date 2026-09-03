@@ -10,17 +10,30 @@
 <body>
 
     <nav>
+        {% if messages %}
+            <div class="toast-messages">
+                {% for message in messages %}
+                    <div class="toast-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div>
+            
+        </div>
+
         <a href="{% url 'home' %}">DevTrack</a>  
 
         {% if user.is_authenticated %}
             <span>Welcome, {{ user.username }}!</span>
+
+            <button><a href="{% url 'application_list' %}" class="nav-btn">My Applications</a></button>
 
             <form action="{% url 'logout' %}" method="post" style="display: inline;">
                 {% csrf_token %}
                 <button type="submit">Logout</button>
             </form>
         {% else %}
-            <!-- Wrapped in a button-->
+        <!-- Wrapped in a button-->
             <button><a href="{% url 'login' %}" class="nav-btn">Login</a></button>
             <button><a href="{% url 'signup' %}" class="nav-btn">Sign Up</a></button>
         {% endif %}
@@ -31,6 +44,16 @@
 
         {% endblock %}
     </main>
+
+    <script>
+        setTimeout(() => {
+            const toasts = document.querySelectorAll('.toast-message');
+            toasts.forEach(toast => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            });
+        }, 500);
+    </script>
 
 </body>
 </html>
