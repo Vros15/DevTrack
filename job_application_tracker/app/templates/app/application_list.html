@@ -2,33 +2,35 @@
 
 {% block content %}
 
-<h1>Job Applications</h1>
+<h1>My Applications</h1>
 
+<section>
+    <h2>Add New Application</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Application</button>
+    </form>
+</section>
 
-{% if applications %}
+<hr style="margin: 30px 0;">
 
-    {% for application in applications %}
-        <div>
-            <h2>{{ application.position }}</h2>
-
-            <p>Company: {{ application.company.name }}</p>
-            <p>Status: {{ application.get_status_display }}</p>
-
-            {% if application.applied_date %}
-                <p>Applied Date: {{ application.applied_date }}</p>
-            
-            
-            
-            {% endif %}
-
-        </div>
-
-    {% endfor %}
-    
-{% else %}
-    <p>No job applications found.</p>
-
-{% endif %}
-
+<section>
+    <h2>Saved & Submitted Applications</h2>
+    {% if applications %}
+        {% for application in applications %}
+            <div>
+                <h3>{{ application.position }}</h3>
+                <p>Company: {{ application.company.name }}</p>
+                <p>Status: {{ application.get_status_display }}</p>
+                {% if application.applied_date %}
+                    <p>Applied Date: {{ application.applied_date }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No job applications found.</p>
+    {% endif %}
+</section>
 
 {% endblock %}
