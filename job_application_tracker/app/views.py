@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 
 from .forms import SignUpForm
@@ -28,3 +28,32 @@ def signup(request):
             "form": form,
         },
     )
+
+def login_user(request):
+    # If the request method is POST, get the username and password from the request and authenticate the user
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        # If the user is authenticated, log them in and redirect to the home page
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+
+    return render(
+        request,
+        "app/login.html",
+        {
+            "error": "Invalid username or password" if request.method == "POST" else "",
+        },
+    )
+
+def logout_user(request):
+    logout(request)
+    return redirect("home")
