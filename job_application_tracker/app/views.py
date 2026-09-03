@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-from .forms import SignUpForm
+from .forms import JobApplicationForm, SignUpForm
 from .models import JobApplication
 
 
@@ -67,13 +67,51 @@ def logout_user(request):
 
 @login_required
 def application_list(request):
+    if request.method == "POST":
+        form = JobApplicationForm(request.POST)
+        if form.is_valid():
+            application = form.save(commit=False)
+            application.user = request.user
+            application.save()
+            messages.success(request, "Job application created successfully.")
+            return redirect("application_list")
+    else:
+        form = JobApplicationForm()
+
     applications = JobApplication.objects.filter(
         user=request.user
-        ).order_by("-created_at")
+    ).order_by("-created_at")
+
     return render(
         request,
         "app/application_list.html",
         {
             "applications": applications,
+            "form": form,
+        },
+    )
+
+@login_required
+def application_create(request):
+    # If the request method is POST, create a new job application using the submitted form data
+    if request.method == "POST":
+        form = JobApplicationForm(request.POST)
+
+        # If the form is valid, save the job application and redirect to the application list page
+        if form.is_valid():
+            application = form.save(commit=False)
+            application.user = request.user
+            application.save()
+            messages.success(request, "Job application created successfully.")
+            return redirect("application_list")
+
+    else:
+        form = JobApplicationForm()
+
+    return render(
+        request,
+        "app/application_form.html",
+        {
+            "form": form,
         },
     )
