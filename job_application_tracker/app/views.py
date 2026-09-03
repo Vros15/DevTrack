@@ -1,7 +1,10 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from .forms import SignUpForm
+from .models import JobApplication
 
 
 def home(request):
@@ -16,6 +19,7 @@ def signup(request):
             user = form.save()
             login(request, user)
 
+            messages.success(request, "You have successfully signed up and logged in.")
             return redirect("home")
     else:
         form = SignUpForm()
@@ -44,6 +48,7 @@ def login_user(request):
         # If the user is authenticated, log them in and redirect to the home page
         if user is not None:
             login(request, user)
+            messages.success(request, "You have successfully logged in.")
             return redirect("home")
 
     return render(
@@ -57,4 +62,18 @@ def login_user(request):
 # Log the user out and redirect to the home page
 def logout_user(request):
     logout(request)
+    messages.success(request, "You have successfully logged out.")
     return redirect("home")
+
+@login_required
+def application_list(request):
+    applications = JobApplication.objects.filter(
+        user=request.user
+        ).order_by("-created_at")
+    return render(
+        request,
+        "app/application_list.html",
+        {
+            "applications": applications,
+        },
+    )
