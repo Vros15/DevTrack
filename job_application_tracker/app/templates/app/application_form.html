@@ -1,0 +1,19 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<h1>Add Job Application</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Add Application</button>
+</form>
+
+<a href="{% url 'application_list' %}">
+    Back to Applications
+</a>
+
+{% endblock %}
