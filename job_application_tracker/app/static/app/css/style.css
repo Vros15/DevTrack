@@ -1,0 +1,9 @@
+/* Import with: 
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}"> 
+{% load static %}
+*/
+
+nav a.nav-btn {
+    text-decoration: none;
+    color: inherit;
+}
