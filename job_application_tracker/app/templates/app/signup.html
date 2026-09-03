@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+
+
+{% block content %}
+<h1>Create Account</h1>
+
+<form method="post">
+    <!-- CSRF token for security -->
+    {% csrf_token %}
+
+    <!-- Render the form fields -->
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+
+{% endblock %}
