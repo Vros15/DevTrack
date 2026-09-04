@@ -1,0 +1,37 @@
+
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<h1>{{ application.position }}</h1>
+
+<p>Company: {{ application.company.name }}</p>
+<p>Status: {{ application.get_status_display }}</p>
+
+{% if application.job_url %}
+    <p>
+        Job Posting:
+        <a href="{{ application.job_url }}" target="_blank">
+            View Job
+        </a>
+    </p>
+{% endif %}
+
+{% if application.salary %}
+    <p>Salary: {{ application.salary }}</p>
+{% endif %}
+
+{% if application.applied_date %}
+    <p>Applied Date: {{ application.applied_date }}</p>
+{% endif %}
+
+{% if application.notes %}
+    <h2>Notes</h2>
+    <p>{{ application.notes }}</p>
+{% endif %}
+
+<a href="{% url 'application_list' %}">
+    Back to Applications
+</a>
+
+{% endblock %}
