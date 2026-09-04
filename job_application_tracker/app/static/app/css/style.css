@@ -8,6 +8,24 @@ nav a.nav-btn {
     color: inherit;
 }
 
+/* Navigation Links */
+.action-link {
+    display: inline-block;
+    padding: 1px 6px;
+    border: 2px outset buttonborder;
+    border-radius: 4px;
+    background-color: buttonface;
+    text-decoration: none;
+    color: buttontext;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: normal;
+}
+
+.action-link:active {
+    border-style: inset;
+}
+
 
 
 .toast-messages {
