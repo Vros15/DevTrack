@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,get_object_or_404
 
 from .forms import JobApplicationForm, SignUpForm
 from .models import JobApplication
@@ -113,5 +113,20 @@ def application_create(request):
         "app/application_form.html",
         {
             "form": form,
+        },
+    )
+
+@login_required
+def application_detail(request, pk):
+    application = get_object_or_404(
+        JobApplication,
+        pk=pk,
+        user=request.user)
+    
+    return render(
+        request,
+        "app/application_detail.html",
+        {
+            "application": application,
         },
     )
