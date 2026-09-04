@@ -65,6 +65,7 @@ def logout_user(request):
     messages.success(request, "You have successfully logged out.")
     return redirect("home")
 
+# View to GET the list of job applications for the logged-in user
 @login_required
 def application_list(request):
     if request.method == "POST":
@@ -91,6 +92,7 @@ def application_list(request):
         },
     )
 
+# View to CREATE a new job application
 @login_required
 def application_create(request):
     # If the request method is POST, create a new job application using the submitted form data
@@ -116,6 +118,7 @@ def application_create(request):
         },
     )
 
+# View to GET the details of a specific job application
 @login_required
 def application_detail(request, pk):
     application = get_object_or_404(
@@ -130,3 +133,39 @@ def application_detail(request, pk):
             "application": application,
         },
     )
+
+# View to UPDATE an existing job application
+@login_required
+def application_update(request, pk):
+    application = get_object_or_404(
+        JobApplication,
+        pk=pk,
+        user=request.user
+    )
+    if request.method == "POST":
+        form = JobApplicationForm(
+            request.POST,
+            instance=application)
+
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Job application updated successfully.")
+
+            return redirect("application_detail", pk=pk)
+
+    else:
+        form = JobApplicationForm(
+            instance=application
+            )
+
+    return render(
+        request,
+        "app/application_form.html",
+        {
+            "form": form,
+            "application": application,
+            "is_edit": True,
+        },
+    )
+
