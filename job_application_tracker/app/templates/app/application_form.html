@@ -2,18 +2,32 @@
 
 {% block content %}
 
-<h1>Add Job Application</h1>
+{% if is_edit %}
+    <h1>Edit Job Application</h1>
+{% else %}
+    <h1>Add Job Application</h1>
+{% endif %}
 
 <form method="post">
     {% csrf_token %}
 
     {{ form.as_p }}
 
-    <button type="submit">Add Application</button>
+    {% if is_edit %}
+        <button type="submit">Save Changes</button>
+    {% else %}
+        <button type="submit">Add Application</button>
+    {% endif %}
 </form>
 
-<a href="{% url 'application_list' %}">
-    Back to Applications
-</a>
+{% if is_edit %}
+    <a href="{% url 'application_detail' application.pk %}">
+        Cancel
+    </a>
+{% else %}
+    <a href="{% url 'application_list' %}">
+        Back to Applications
+    </a>
+{% endif %}
 
 {% endblock %}
