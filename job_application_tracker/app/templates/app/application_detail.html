@@ -30,8 +30,11 @@
     <p>{{ application.notes }}</p>
 {% endif %}
 
-<a href="{% url 'application_list' %}">
+<a href="{% url 'application_list' %}" class="action-link">
     Back to Applications
+</a>
+<a href="{% url 'application_update' application.pk %}" class="action-link">
+    Edit Application
 </a>
 
 {% endblock %}
