@@ -20,7 +20,11 @@
     {% if applications %}
         {% for application in applications %}
             <div>
-                <h3>{{ application.position }}</h3>
+                <h3>
+                    <a href="{% url 'application_detail' application.pk %}">
+                        {{ application.position }}
+                    </a>
+                </h3>
                 <p>Company: {{ application.company.name }}</p>
                 <p>Status: {{ application.get_status_display }}</p>
                 {% if application.applied_date %}
