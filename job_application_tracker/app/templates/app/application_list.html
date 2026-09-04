@@ -5,17 +5,6 @@
 <h1>My Applications</h1>
 
 <section>
-    <h2>Add New Application</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add Application</button>
-    </form>
-</section>
-
-<hr style="margin: 30px 0;">
-
-<section>
     <h2>Saved & Submitted Applications</h2>
     {% if applications %}
         {% for application in applications %}
@@ -35,6 +24,17 @@
     {% else %}
         <p>No job applications found.</p>
     {% endif %}
+</section>
+
+<hr style="margin: 30px 0;">
+
+<section>
+    <h2>Add New Application</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Application</button>
+    </form>
 </section>
 
 {% endblock %}
